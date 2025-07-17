@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const blocoDeNotas = document.getElementById('blocoDeNotas');
     const btnLimparNotas = document.getElementById('limparNotas');
     const btnSalvarNotas = document.getElementById('salvarNotas');
+    const btnEstiloAleatorio = document.getElementById('estiloAleatorio');
     // 2 Adicionando um evento de clique ao botão de limpar notas
     // ------------------------------------
     btnLimparNotas.addEventListener('click', () => {
@@ -25,8 +26,25 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('minhaNota', blocoDeNotas.value);
         console.log("Notas salvas!");
     });
+    // 4 FUNÇÃO PARA APLICAR ESTILO ALEATÓRIO
+    // ------------------------------------
+    btnEstiloAleatorio.addEventListener('click', () => {
+        const cores = ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#FF33A1'];
+        const fonteTamanhos = ['16px', '18px', '20px', '22px', '24px'];
+        const corFundo = cores[Math.floor(Math.random() * cores.length)];
+        const corTexto = cores[Math.floor(Math.random() * cores.length)];
+        const tamanhoFonte = fonteTamanhos[Math.floor(Math.random() * fonteTamanhos.length)];
 
+        document.body.style.backgroundColor = corFundo;
+        document.body.style.color = corTexto;
+        document.body.style.fontSize = tamanhoFonte;
 
+        blocoDeNotas.style.backgroundColor = corFundo;
+        blocoDeNotas.style.color = corTexto;
+        blocoDeNotas.style.fontSize = tamanhoFonte;
+
+        console.log("Estilo aleatório aplicado!");
+    });
 
     // 4 CARREGANDO DADOS DO LOCALSTORAGE
     // ------------------------------------
